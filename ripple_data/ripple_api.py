@@ -10,7 +10,7 @@ import logging
 
 from urllib.parse import urlencode, urljoin
 
-logger = logging.getLogger(__name__)
+#logger = logging.getLogger(__name__)
 
 
 class RippleAPI(object):
@@ -24,7 +24,7 @@ class RippleAPI(object):
         """
         """
 
-        logger.debug('Request method %s with params %s', method, params)
+#        logger.debug('Request method %s with params %s', method, params)
 
         # remove empty args
         try:
@@ -38,7 +38,7 @@ class RippleAPI(object):
         # query
         response = requests.get(url_endpoint, params=urlencode(query))
 
-        logger.info('GET [{}] {}'.format(response.status_code, response.url))
+#        logger.info('GET [{}] {}'.format(response.status_code, response.url))
 
         # check response code
         if response.status_code != requests.codes.ok:
@@ -48,7 +48,7 @@ class RippleAPI(object):
             else:
                 response.raise_for_status()
 
-        logger.debug('MIMETYPE {}'.format(response.headers['content-type']))
+#        logger.debug('MIMETYPE {}'.format(response.headers['content-type']))
 
         # get data from response
         if response.headers['content-type'] == cls.MIME_TYPE_JSON:
